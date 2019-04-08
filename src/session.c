@@ -51,6 +51,7 @@ static void __context_deinit(
 static const char * __make_subscription_key(swclt_sess_ctx_t *ctx, const char * protocol, const char * channel, ks_bool_t dupe)
 {
 	test();
+	k=1;
 	const char * key = ks_thr_sprintf("%s:%s", protocol, channel);
 	if (dupe)
 		return ks_pstrdup(ctx->base.pool, key);
