@@ -19,6 +19,7 @@ steps:
       - git clone https://github.com/signalwire/libks libks
       - cd libks && cmake . -DCMAKE_BUILD_TYPE=Release && make && make install && cd ..
       - sed -i '/cotire/d' ./CMakeLists.txt
+      - sed -i '/cotire/d' ./swclt_test/CMakeLists.txt
       - mkdir -p ../scan-build
       - scan-build-4.0 -o ../scan-build/ cmake .
       - echo "#!/bin/bash\nscan-build-4.0 -o ../scan-build/ make -j`nproc --all` |& tee ../scan-build-result.txt\nexitstatus=\${PIPESTATUS[0]}\necho \$exitstatus > ../scan-build-status.txt\n" > scan.sh
